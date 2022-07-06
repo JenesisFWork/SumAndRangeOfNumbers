@@ -1,0 +1,67 @@
+// C++SumAverageRange.cpp
+// CIS054 C/C++ Programming
+// Jenesis Fabia
+// Sept. 24, 2021
+// Inputs: Enter 10 numbers
+// Outputs: sum of odd numbers, sum of even numbers, sum of all numbers
+//          lowest and highest number
+
+#include<iostream>
+using namespace std;
+
+const int NUMBER_COUNT = 10; //define a constant
+
+int main(int argc, char* argv[])
+{
+	int sumOfOddNumbers = 0; //integers hold only whole numbers
+	int sumOfEvenNumbers = 0;
+	int sumOfAllNumbers = 0;
+	int minValue = 0;
+	int maxValue = 0;
+	int number;
+	int inputCounter = 1;
+
+	//INPUT: numbers
+	while (inputCounter <= NUMBER_COUNT) //count from 1 to NUMBER_COUNT
+	{
+		cout << "Enter a number: ";
+		cin >> number;
+
+		//determine if the number is odd or even
+		if (number %2 == 1) //odd number
+			sumOfOddNumbers += number;
+		else //even number
+			sumOfEvenNumbers += number;
+
+		//also add the total of all numbers
+		sumOfAllNumbers += number;
+
+		//determine the range (min,max) of the input values
+		if (inputCounter == 1)  //reading the first value?
+		{
+			minValue = number; //initialize minValue and maxValue
+			maxValue = number; //to the first value read from kbd
+		}
+		else
+		{
+			if (number < minValue) //see if minValue needs updating
+				minValue = number; //-yes
+			    maxValue = number; //see if maxValue needs updating
+		}
+
+		//keep count of how many numbers were entered
+		inputCounter++;
+	} //end of while loop
+
+	//OUTPUT: display the results
+	cout << endl; //blank line before the summary information
+	cout << "Sum of Odd Numbers: " << sumOfOddNumbers << endl;
+	cout << "Sum of Even Numbers: " << sumOfEvenNumbers << endl;
+	cout << "Sum of All Numbers: " << sumOfAllNumbers << endl;
+	cout << "The lowest value is: " << minValue << endl;
+	cout << "The highest value is: " << maxValue << endl;
+	cout << endl; //blank line at end of program
+
+	return 0;
+}
+
